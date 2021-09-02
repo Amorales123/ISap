@@ -17,10 +17,12 @@ namespace ISap.Models
         {
         }
 
+        public virtual DbSet<DbServer> DbServers { get; set; }
         public virtual DbSet<Inv1> Inv1s { get; set; }
         public virtual DbSet<Oinv> Oinvs { get; set; }
         public virtual DbSet<Orct> Orcts { get; set; }
         public virtual DbSet<Ousr> Ousrs { get; set; }
+        public virtual DbSet<SapServer> SapServers { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -34,6 +36,34 @@ namespace ISap.Models
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
+
+            modelBuilder.Entity<DbServer>(entity =>
+            {
+                entity.HasKey(e => e.IdDbServer);
+
+                entity.ToTable("DB_SERVER");
+
+                entity.HasIndex(e => e.ServerName, "UQ__DB_SERVE__97BAE5EBC3C000A8")
+                    .IsUnique();
+
+                entity.Property(e => e.IdDbServer).HasColumnName("ID_DB_SERVER");
+
+                entity.Property(e => e.ServerName)
+                    .IsRequired()
+                    .HasMaxLength(100);
+
+                entity.Property(e => e.ServerPass)
+                    .IsRequired()
+                    .HasMaxLength(254);
+
+                entity.Property(e => e.ServerType)
+                    .IsRequired()
+                    .HasMaxLength(25);
+
+                entity.Property(e => e.ServerUser)
+                    .IsRequired()
+                    .HasMaxLength(50);
+            });
 
             modelBuilder.Entity<Inv1>(entity =>
             {
@@ -170,6 +200,32 @@ namespace ISap.Models
                     .HasMaxLength(45)
                     .IsUnicode(false)
                     .HasColumnName("USERNAME");
+            });
+
+            modelBuilder.Entity<SapServer>(entity =>
+            {
+                entity.HasKey(e => e.IdSapServer);
+
+                entity.ToTable("SAP_SERVER");
+
+                entity.Property(e => e.IdSapServer).HasColumnName("ID_SAP_SERVER");
+
+                entity.Property(e => e.CmpName)
+                    .IsRequired()
+                    .HasMaxLength(100);
+
+                entity.Property(e => e.DbName)
+                    .IsRequired()
+                    .HasMaxLength(100);
+
+                entity.Property(e => e.Loc)
+                    .IsRequired()
+                    .HasMaxLength(100)
+                    .HasColumnName("LOC");
+
+                entity.Property(e => e.VersStr)
+                    .IsRequired()
+                    .HasMaxLength(13);
             });
 
             OnModelCreatingPartial(modelBuilder);

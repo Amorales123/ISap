@@ -9,7 +9,7 @@ namespace ISap.SAPB1
 {
     class DI
     {
-        private Company company;
+        protected Company company { get; }
 
         public DI()
         {

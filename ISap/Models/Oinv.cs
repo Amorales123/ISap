@@ -22,11 +22,9 @@ namespace ISap.Models
         public string CardCode { get; set; }
         public string CardName { get; set; }
         public decimal DocTotal { get; set; }
-        public int SyncronizedBy { get; set; }
-        public DateTime SyncronizedDate { get; set; }
-        public TimeSpan SyncronizedTime { get; set; }
+        public DateTime? SyncronizedDate { get; set; }
+        public TimeSpan? SyncronizedTime { get; set; }
 
-        public virtual Ousr SyncronizedByNavigation { get; set; }
         public virtual ICollection<Inv1> Inv1s { get; set; }
         public virtual ICollection<Orct> Orcts { get; set; }
     }

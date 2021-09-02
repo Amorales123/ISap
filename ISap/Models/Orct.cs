@@ -16,8 +16,8 @@ namespace ISap.Models
         public decimal CreditSum { get; set; }
         public decimal CheckSum { get; set; }
         public decimal TrsfrSum { get; set; }
-        public DateTime SyncronizedDate { get; set; }
-        public TimeSpan SyncronizedTime { get; set; }
+        public DateTime? SyncronizedDate { get; set; }
+        public TimeSpan? SyncronizedTime { get; set; }
 
         public virtual Oinv IdOinvNavigation { get; set; }
     }

@@ -32,8 +32,9 @@ namespace ISap
             {
                 timer1.Stop();
                 ProgressBar.Width = 3;
-                MessageBox.Show("Bienvenido");
-                timer1.Start();
+                Setup.Configuration configuration = new Setup.Configuration();
+                configuration.Show();
+                this.Hide();
             }            
             
         }

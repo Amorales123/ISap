@@ -94,7 +94,7 @@ namespace ISap
 
         #endregion
         //hola, soy un comentario
-        //adios
+        //adios ccc
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView dgvHola;
         private System.Windows.Forms.Button button2;

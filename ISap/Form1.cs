@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ISap.Models;
+using SAPbobsCOM;
 namespace ISap
 {
     public partial class Form1 : Form
@@ -18,9 +19,11 @@ namespace ISap
         }
 
         private void Form1_Load(object sender, EventArgs e)
-        {           
+        {
+            Company company = new Company();
+            company.DbServerType = BoDataServerTypes.dst_MSSQL2019;
         }
-
+        
         private void button1_Click(object sender, EventArgs e)
         {
             using( DB_ISAPContext db = new DB_ISAPContext())
@@ -47,12 +50,17 @@ namespace ISap
                 db.SaveChanges();
             }
             MessageBox.Show("registro Actualizado");
+            
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            using (DB_ISAPContext db = new DB_ISAPContext())
+            Helpers.Utils.DB_Server = "DESKTOP-R24LB32";
+            Helpers.Utils.DB_User = "sa";
+            Helpers.Utils.DB_Pass = "1234";
+            using (MyContext db = new MyContext())
             {
+                
                 var data = db.Ousrs
                            .Select(q => new
                            {
@@ -60,7 +68,9 @@ namespace ISap
                                q.Username
                            });
                 dgvHola.DataSource = data.ToList();
+                
             }
         }
+        
     }
 }

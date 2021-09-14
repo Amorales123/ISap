@@ -1,0 +1,92 @@
+-- -----------------------------------------------------
+-- Table OUSR
+-- -----------------------------------------------------
+CREATE TABLE  OUSR (
+  ID_OUSR INT NOT NULL IDENTITY,
+  USERCODE NVARCHAR(45) NOT NULL,
+  USERNAME NVARCHAR(45) NOT NULL,
+  CONSTRAINT PK_OUSR PRIMARY KEY (ID_OUSR));
+
+
+-- -----------------------------------------------------
+-- Table OINV
+-- -----------------------------------------------------
+CREATE TABLE  OINV (
+  ID_OINV INT NOT NULL IDENTITY,
+  DocEntry INT NULL,
+  DocNum INT NULL,
+  DocDate DATE NOT NULL,
+  TaxDate DATE NOT NULL,
+  DocDueDate DATE NOT NULL,
+  CardCode NVARCHAR(40) NOT NULL,
+  CardName NVARCHAR(200) NOT NULL,
+  DocTotal DECIMAL(19,6) NOT NULL,  
+  SyncronizedDate DATE NULL,
+  SyncronizedTime TIME NULL,
+  CONSTRAINT PK_OINV PRIMARY KEY (ID_OINV))
+;
+
+
+-- -----------------------------------------------------
+-- Table INV1
+-- -----------------------------------------------------
+CREATE TABLE  INV1 (
+  ID_INV1 INT NOT NULL IDENTITY,
+  ID_OINV INT NOT NULL,
+  ItemCode NVARCHAR(50) NOT NULL,
+  Dscription NVARCHAR(200) NOT NULL,
+  Quantity DECIMAL(19,6) NOT NULL,
+  Price DECIMAL(19,6) NOT NULL,
+  Currency NVARCHAR(5) NOT NULL,
+  Rate DECIMAL(19,6) NOT NULL,
+  DiscPrcnt DECIMAL(19,6) NOT NULL,
+  LineTotal DECIMAL(19,6) NOT NULL,
+  TotalFrgn DECIMAL(19,6) NOT NULL,
+  TaxCode NVARCHAR(10) NOT NULL,
+  VatSum DECIMAL(19,6) NOT NULL,
+  VatSumFrgn DECIMAL(19,6) NOT NULL,
+  CONSTRAINT PK_INV1 PRIMARY KEY (ID_INV1),
+  CONSTRAINT fk_INV1_OINV1
+    FOREIGN KEY (ID_OINV)
+    REFERENCES OINV (ID_OINV)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+;
+
+CREATE TABLE ORCT (
+  ID_ORCT INT NOT NULL IDENTITY,
+  ID_OINV INT NOT NULL,
+  DocNum INT NULL,
+  DocDate DATE NOT NULL,
+  DocTotal DECIMAL(19,6) NOT NULL,
+  CashSum DECIMAL(19,6) NOT NULL,
+  CreditSum DECIMAL(19,6) NOT NULL,
+  CheckSum DECIMAL(19,6) NOT NULL,
+  TrsfrSum DECIMAL(19,6) NOT NULL,
+  SyncronizedDate DATE NULL,
+  SyncronizedTime TIME NULL,
+  CONSTRAINT PK_ORCT PRIMARY KEY (ID_ORCT), 
+  CONSTRAINT fk_ORCT_OINV1
+    FOREIGN KEY (ID_OINV)
+    REFERENCES OINV (ID_OINV)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE);
+
+CREATE TABLE DB_SERVER(
+	ID_DB_SERVER 	INT NOT NULL IDENTITY,
+	ServerType		NVARCHAR(25) NOT NULL,	
+	ServerName		NVARCHAR(100) NOT NULL UNIQUE,
+	ServerUser		NVARCHAR(50) NOT NULL,
+	ServerPass		NVARCHAR(254) NOT NULL,
+	CONSTRAINT PK_DB_SERVER PRIMARY KEY(ID_DB_SERVER)
+);
+
+CREATE TABLE SAP_SERVER(
+	ID_SAP_SERVER INT NOT NULL IDENTITY,
+	DbName	NVARCHAR(100) NOT NULL,
+	CmpName	NVARCHAR(100) NOT NULL,
+	VersStr	NVARCHAR(13)	 NOT NULL,
+	LOC		NVARCHAR(100) NOT NULL,
+	CONSTRAINT PK_SAP_SERVER PRIMARY KEY(ID_SAP_SERVER)
+);
+Scaffold-DBContext "Server=DESKTOP-R24LB32;Database=DB_ISAP;User Id=sa;Password=1234;" -outputdir "Models" -Provider "Microsoft.EntityFrameworkCore.SqlServer"

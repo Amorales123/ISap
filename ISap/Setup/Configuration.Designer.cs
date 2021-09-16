@@ -29,10 +29,23 @@ namespace ISap.Setup
         /// </summary>
         private void InitializeComponent()
         {
-            this.TestConnection = new FontAwesome.Sharp.IconButton();
             this.MyGrid = new System.Windows.Forms.DataGridView();
+            this.TestConnection = new FontAwesome.Sharp.IconButton();
+            this.ConfBD = new FontAwesome.Sharp.IconButton();
+            this.confSAP = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)(this.MyGrid)).BeginInit();
             this.SuspendLayout();
+            // 
+            // MyGrid
+            // 
+            this.MyGrid.Location = new System.Drawing.Point(12, 12);
+            this.MyGrid.MultiSelect = false;
+            this.MyGrid.Name = "MyGrid";
+            this.MyGrid.ReadOnly = true;
+            this.MyGrid.RowTemplate.Height = 25;
+            this.MyGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.MyGrid.Size = new System.Drawing.Size(776, 207);
+            this.MyGrid.TabIndex = 17;
             // 
             // TestConnection
             // 
@@ -50,22 +63,50 @@ namespace ISap.Setup
             this.TestConnection.UseVisualStyleBackColor = true;
             this.TestConnection.Click += new System.EventHandler(this.TestConnection_Click);
             // 
-            // MyGrid
+            // ConfBD
             // 
-            this.MyGrid.Location = new System.Drawing.Point(12, 12);
-            this.MyGrid.MultiSelect = false;
-            this.MyGrid.Name = "MyGrid";
-            this.MyGrid.ReadOnly = true;
-            this.MyGrid.RowTemplate.Height = 25;
-            this.MyGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.MyGrid.Size = new System.Drawing.Size(776, 207);
-            this.MyGrid.TabIndex = 17;
+            this.ConfBD.BackgroundImage = global::ISap.Properties.Resources.BD;
+            this.ConfBD.Cursor = System.Windows.Forms.Cursors.Default;
+            this.ConfBD.IconChar = FontAwesome.Sharp.IconChar.Database;
+            this.ConfBD.IconColor = System.Drawing.Color.Black;
+            this.ConfBD.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.ConfBD.IconSize = 35;
+            this.ConfBD.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ConfBD.Location = new System.Drawing.Point(680, 225);
+            this.ConfBD.Name = "ConfBD";
+            this.ConfBD.Size = new System.Drawing.Size(108, 52);
+            this.ConfBD.TabIndex = 18;
+            this.ConfBD.Text = "Configurar Servidor BD";
+            this.ConfBD.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ConfBD.UseMnemonic = false;
+            this.ConfBD.UseVisualStyleBackColor = true;
+            this.ConfBD.Click += new System.EventHandler(this.ConfBD_Click);
+            // 
+            // confSAP
+            // 
+            this.confSAP.BackgroundImage = global::ISap.Properties.Resources.BD;
+            this.confSAP.Cursor = System.Windows.Forms.Cursors.Default;
+            this.confSAP.IconChar = FontAwesome.Sharp.IconChar.Coins;
+            this.confSAP.IconColor = System.Drawing.Color.Black;
+            this.confSAP.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.confSAP.IconSize = 35;
+            this.confSAP.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.confSAP.Location = new System.Drawing.Point(552, 225);
+            this.confSAP.Name = "confSAP";
+            this.confSAP.Size = new System.Drawing.Size(122, 52);
+            this.confSAP.TabIndex = 19;
+            this.confSAP.Text = "Configurar Sociedades SAP";
+            this.confSAP.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.confSAP.UseMnemonic = false;
+            this.confSAP.UseVisualStyleBackColor = true;
             // 
             // Configuration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 284);
+            this.Controls.Add(this.confSAP);
+            this.Controls.Add(this.ConfBD);
             this.Controls.Add(this.MyGrid);
             this.Controls.Add(this.TestConnection);
             this.Name = "Configuration";
@@ -77,8 +118,9 @@ namespace ISap.Setup
         }
 
         #endregion
-
-        private FontAwesome.Sharp.IconButton TestConnection;
         private System.Windows.Forms.DataGridView MyGrid;
+        private FontAwesome.Sharp.IconButton TestConnection;
+        private FontAwesome.Sharp.IconButton ConfBD;
+        private FontAwesome.Sharp.IconButton confSAP;
     }
 }

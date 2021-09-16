@@ -55,5 +55,11 @@ namespace ISap.Setup
 
             }
         }
+
+        private void ConfBD_Click(object sender, EventArgs e)
+        {
+            Setup.DBServer DBServer = new Setup.DBServer();
+            DBServer.Show();
+        }
     }
 }

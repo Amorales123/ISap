@@ -61,5 +61,11 @@ namespace ISap.Setup
             Setup.DBServer DBServer = new Setup.DBServer();
             DBServer.Show();
         }
+
+        private void confSAP_Click(object sender, EventArgs e)
+        {
+            Setup.SapServer SapServer = new Setup.SapServer();
+            SapServer.Show();
+        }
     }
 }

@@ -12,5 +12,6 @@ namespace ISap.Models
         public string CmpName { get; set; }
         public string VersStr { get; set; }
         public string Loc { get; set; }
+
     }
 }

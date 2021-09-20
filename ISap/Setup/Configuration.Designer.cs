@@ -99,6 +99,7 @@ namespace ISap.Setup
             this.confSAP.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.confSAP.UseMnemonic = false;
             this.confSAP.UseVisualStyleBackColor = true;
+            this.confSAP.Click += new System.EventHandler(this.confSAP_Click);
             // 
             // Configuration
             // 

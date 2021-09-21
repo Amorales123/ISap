@@ -105,11 +105,11 @@ namespace ISap.Setup
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(421, 239);
+            this.button1.Location = new System.Drawing.Point(397, 235);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(72, 22);
+            this.button1.Size = new System.Drawing.Size(87, 42);
             this.button1.TabIndex = 20;
-            this.button1.Text = "button1";
+            this.button1.Text = "Arreglo de TCs";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -117,9 +117,9 @@ namespace ISap.Setup
             // 
             this.button2.Location = new System.Drawing.Point(290, 235);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(76, 25);
+            this.button2.Size = new System.Drawing.Size(101, 42);
             this.button2.TabIndex = 21;
-            this.button2.Text = "button2";
+            this.button2.Text = "Cambio a Fecha";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 

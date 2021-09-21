@@ -36,6 +36,28 @@ namespace ISap.Helpers
             }
             return tc;
         }
+
+        /// <summary>
+        /// Retorna tipo de cambio desde la fecha solicitada hasta el día actual
+        /// </summary>
+        /// <param name="date"> Formato: dd/mm/yyyy</param>
+        /// <returns></returns>
+        public static TipoCambio TcFromDate(String date)
+        {
+            TipoCambio tc = new TipoCambio();
+            foreach (TCBanGuat.Var var in tipoCambio.TipoCambioFechaInicial(date).Vars)
+            {
+                if (var.fecha.Contains(date))
+                {
+                    tc.fecha = var.fecha;
+                    tc.tcCompra = var.compra;
+                    tc.tcVenta = var.venta;
+                }
+                break;
+            }
+            return tc;
+        }
+
     }
 
 }

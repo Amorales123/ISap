@@ -33,6 +33,8 @@ namespace ISap.Setup
             this.TestConnection = new FontAwesome.Sharp.IconButton();
             this.ConfBD = new FontAwesome.Sharp.IconButton();
             this.confSAP = new FontAwesome.Sharp.IconButton();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.MyGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -101,11 +103,33 @@ namespace ISap.Setup
             this.confSAP.UseVisualStyleBackColor = true;
             this.confSAP.Click += new System.EventHandler(this.confSAP_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(421, 239);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(72, 22);
+            this.button1.TabIndex = 20;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(290, 235);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(76, 25);
+            this.button2.TabIndex = 21;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // Configuration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 284);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.confSAP);
             this.Controls.Add(this.ConfBD);
             this.Controls.Add(this.MyGrid);
@@ -123,5 +147,7 @@ namespace ISap.Setup
         private FontAwesome.Sharp.IconButton TestConnection;
         private FontAwesome.Sharp.IconButton ConfBD;
         private FontAwesome.Sharp.IconButton confSAP;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }

@@ -80,11 +80,11 @@ namespace ISap.Setup
         {
             try
             {
-                using (Microsoft.Data.SqlClient.SqlConnection cn = new Microsoft.Data.SqlClient.SqlConnection(String.Format("Server={0};Database=SBO-COMMON;User Id={1};Password={2};", Utils.DB_Server, Utils.DB_User, Utils.DB_Pass)))
+                using (Microsoft.Data.SqlClient.SqlConnection cn = new Microsoft.Data.SqlClient.SqlConnection(String.Format("Server={0};Database=DB_ISAP;User Id={1};Password={2};", Utils.DB_Server, Utils.DB_User, Utils.DB_Pass)))
                 {
                     var bindingSource = new BindingSource();
-                    String query = @"SELECT cmpName AS Sociedad,dbName AS [Nombre DB] ,LOC AS Region,versStr AS Version FROM SRGC;";
-                    using(Microsoft.Data.SqlClient.SqlDataAdapter dataAdapter = new Microsoft.Data.SqlClient.SqlDataAdapter(query, cn))
+                    String query = @"SELECT * FROM SBV_SOCIEDADES_CONECTADAS";
+                    using (Microsoft.Data.SqlClient.SqlDataAdapter dataAdapter = new Microsoft.Data.SqlClient.SqlDataAdapter(query, cn))
                     {
                         cn.Open();
                         using (Microsoft.Data.SqlClient.SqlCommandBuilder sqlCommandBuilder = new Microsoft.Data.SqlClient.SqlCommandBuilder(dataAdapter))
@@ -100,9 +100,9 @@ namespace ISap.Setup
                     }
                 }
             }
-            catch
+            catch(Exception msg )
             {
-
+                MessageBox.Show(msg.Message.ToString());
             }
         }
 

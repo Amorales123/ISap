@@ -37,6 +37,10 @@ namespace ISap.Setup
         private void Configuration_Load(object sender, EventArgs e)
         {
             loadDocuments();
+            Helpers.TipoCambio tc = new Helpers.TipoCambio();
+            tc = Helpers.TCService.TcNow();
+
+            MessageBox.Show(String.Format("Fecha: {0}\n Tipo de cambio: {1}",tc.fecha,tc.tcVenta));
         }
         private void loadDocuments()
         {
@@ -66,6 +70,20 @@ namespace ISap.Setup
         {
             Setup.SapServer SapServer = new Setup.SapServer();
             SapServer.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            foreach(Helpers.TipoCambio tc in Helpers.TCService.TcToDate("17/09/2021"))
+                MessageBox.Show(String.Format("Fecha: {0}\n Tipo de cambio: {1}", tc.fecha, tc.tcVenta));
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Helpers.TipoCambio tc = new Helpers.TipoCambio();
+            tc = Helpers.TCService.TcFromDate("17/09/2021");
+
+            MessageBox.Show(String.Format("Fecha: {0}\n Tipo de cambio: {1}", tc.fecha, tc.tcVenta));
         }
     }
 }
